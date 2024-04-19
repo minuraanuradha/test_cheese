@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+     <style>
+  body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+} 
+  .section1
+         {
+             float:left;
+             width: 20%;  
+             background-color:gainsboro; 
+             justify-content:space-around;
+         }
+          .sections
+         {
+             float:left;
+             width: 80%;  
+             background-color: #F9F6EE; 
+             justify-content:space-around;
+         }
+ h2
+         {
+             color: #097969;
+              font-family: sans-serif;
+         }
+ h3{
+            color:#228B22;
+              font-family: sans-serif;  
+    }
+div{
+  box-sizing: border-box;
+   
+}
+nav{
+  background: #023020;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  color: #fff;
+}
+.nav-links {
+    display: flex;
+    justify-content:space-around;
+    width: 50%;
+    text-transform: uppercase;
+}
+.nav-links a{
+  display: block;
+   text-transform: uppercase;
+   text-decoration: none;
+   color: #fff;
+  border-bottom:2px solid transparent;
+  transition:0.5s ease;
+  transform: translateX(0%);
+}
+.nav-links a:hover{
+  color:#7CFC00;
+  letter-spacing: 5px;
+}
+.burger{
+  display: none;
+}
+.burger div{
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 5px;
+  transition:all 0.5s ease;
+}
+.sections p {
+}
+@media only screen and (max-width: 760px){
+   nav{
+    justify-content: space-between;
+    padding: 0 5vw;
+  }
+  .nav-links{
+    position: absolute;
+    right: 0;
+    top:8vh;
+    min-height:92vh;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translateX(100%);
+    transition:All 0.5s ease-in;
+  }
+  .nav-links a{
+    opacity: 0;
+ 
+  }
+  .burger{
+    display: block;
+  }
+ 
+}
+@media only screen and (max-width: 640px){
+  nav{
+    justify-content: space-between;
+    padding: 0 5vw;
+  }
+}
+.nav-active{
+  transform: translateX(0);
+}
+@media only screen and (max-width: 460px){
+  .nav-links{
+    width: 100%;
+    transition:All 0.5s ease;
+  }
+}
+.nav-active{
+  transform: translateX(0);
+}
+@keyframes navLinkFade{
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.toggle .line1{
+   transform: rotate(-45deg) translate(-5px,6px );
+}
+.toggle .line2{
+   opacity: 0;
+}
+.toggle .line3{
+   transform: rotate(45deg) translate(-5px,-6px );
+}
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+
+     </style>
+    <script>
+
+let slideIndex = 0;
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
+
+</script>
+</head>
+
+<body onLoad="showSlides()">
+
+  <header> </header>
+  <div class="slideshow-container">
+<script>
+       const navSlide = () => {
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".nav-links");
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("nav-active");
+
+    navLinks.forEach((link, index) => {
+      if (link.style.animation) {
+        link.style.animation = "";
+      } else {
+        link.style.animation = `navLinkFade 0.5s ease forwards ${
+          index / 7 + 0.5
+        }s `;
+      }
+    });
+    burger.classList.toggle("toggle");
+  });
+  //
+};
+
+navSlide();
+          </script>
+          <nav>
+  <div class="logo">
+    <h4>TrashToCash</h4>
+  </div>
+  <ul class="nav-links"> 
+      <a href="#">Home</a>
+      <a href="login.php">Sign In</a> 
+      <a href="myAccount.php">My Account</a>
+     <a href="#">All Items</a> 
+
+  </ul>
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+ 
+    <div class="mySlides fade"><img src="images/slider/1.png" style="width:100%">
+   <br>
+  
+</div>
+		 <div class="mySlides fade">
+   <img src="images/slider/2.png" style="width:100%">
+ <br>
+  
+</div>
+		 <div class="mySlides fade">
+   <img src="images/slider/3.png" style="width:100%">
+   <br>
+  
+</div>
+		 <div class="mySlides fade">
+   <img src="images/slider/4.png" style="width:100%">
+   <br>
+ 
+</div>
+
+   <span class="section1"><img src="images/18da2e9e-431e-45e9-93be-6482bb7f7121_1.f04f93c5a256e9be6d3fb4403eba4d1d.jpeg" alt="" width="200" height="200
+      "/></span>
+<div class="sections">
+        <h3>We all know that it is important to recycle for the well-being of our planet.</h3>
+        <h2>Did you know that you could make serious money out of it?</h2>
+    <p> Your empty bottles, shoe boxes, and old mobile phones could be worth a fortune, and you could even cash in on empty cans and toilet roll tubes. When it comes to recycling, one man’s trash really is another man’s treasure!</p>
+    <h3> All you have to do is <a href="login.php" class=".nav-links">register</a> with us.</h3>
+    <p> If you like to sell any recycle item, you can post a classified advertisement. If you are looking for an item to buy, simply enter the material and click search. If you are interested in buying items, we will collect the items and deliver to your doorstep!! </p>
+    </div>
+
+    
+</div> 
+      
+    
+</body>
+</html>
